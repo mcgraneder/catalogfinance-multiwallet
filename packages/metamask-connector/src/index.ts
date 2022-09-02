@@ -81,19 +81,15 @@ export class InjectedConnector extends AbstractConnector {
     }
 
     //handleds case where user has multiple injected wallets installed
-    if ((provider as any).providers.length) {
-      (provider as any).providers.forEach(async (p: any) => {
-        if (p.isMetaMask) {
-          provider = (provider as any).providers[0];
-          ;(provider as any).autoRefreshOnNetworkChange = false
-        }
-      });
+    if ((provider as any).providers?.length) {
+      provider = (provider as any).providers.find((p: any) => p.isMetaMask) ?? (provider as any).providers[0]
+        
     }
 
     // try to activate + get account via eth_requestAccounts
     let account
     try {
-      account = await (provider.send as Send)('eth_requestAccounts').then(
+      account = await (provider?.send as Send)( 'eth_accounts').then(
         sendReturn => parseSendReturn(sendReturn)[0]
       )
     } catch (error) {
@@ -106,7 +102,7 @@ export class InjectedConnector extends AbstractConnector {
     // if unsuccessful, try enable
     if (!account) {
       // if enable is successful but doesn't return accounts, fall back to getAccount (not happy i have to do this...)
-      account = await provider.enable().then(sendReturn => sendReturn && parseSendReturn(sendReturn)[0])
+      account = await provider?.enable().then(sendReturn => sendReturn && parseSendReturn(sendReturn)[0])
     }
 
     return { provider: provider, ...(account ? { account } : {}) }
