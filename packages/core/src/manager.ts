@@ -175,6 +175,7 @@ export function useWeb3ReactManager(): Web3ReactManagerReturn {
         throw Error("This should never happen, it's just so Typescript stops complaining")
       }
 
+
       
       const updateBusterInitial = updateBusterRef.current
 
