@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "A simple, maximally extensible, dependency minimized framework for building modern Ethereum dApps",
   "keywords": [
     "react",
@@ -34,7 +34,7 @@
     "lint": "tsdx lint src"
   },
   "dependencies": {
-    "@catalogfinance-multiwallet/types": "^0.14.0"
+    "@catalogfinance-multiwallet/types": "^0.15.0"
   },
   "license": "MIT"
 }
