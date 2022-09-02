@@ -68,25 +68,32 @@ export class InjectedConnector extends AbstractConnector {
   }
 
   public async activate(): Promise<ConnectorUpdate> {
-    if (!window.ethereum) {
+    let provider = window.ethereum;
+    if (!provider || !window.ethereum) {
       throw new NoEthereumProviderError()
     }
 
-    if (window.ethereum.on) {
-      window.ethereum.on('chainChanged', this.handleChainChanged)
-      window.ethereum.on('accountsChanged', this.handleAccountsChanged)
-      window.ethereum.on('close', this.handleClose)
-      window.ethereum.on('networkChanged', this.handleNetworkChanged)
+    if (provider.on) {
+      provider.on('chainChanged', this.handleChainChanged)
+      provider.on('accountsChanged', this.handleAccountsChanged)
+      provider.on('close', this.handleClose)
+      provider.on('networkChanged', this.handleNetworkChanged)
     }
 
-    if ((window.ethereum as any).isMetaMask) {
-      ;(window.ethereum as any).autoRefreshOnNetworkChange = false
+    //handleds case where user has multiple injected wallets installed
+    if ((provider as any).providers.length) {
+      (provider as any).providers.forEach(async (p: any) => {
+        if (p.isMetaMask) {
+          provider = (provider as any).providers[0];
+          ;(provider as any).autoRefreshOnNetworkChange = false
+        }
+      });
     }
 
     // try to activate + get account via eth_requestAccounts
     let account
     try {
-      account = await (window.ethereum.send as Send)('eth_requestAccounts').then(
+      account = await (provider.send as Send)('eth_requestAccounts').then(
         sendReturn => parseSendReturn(sendReturn)[0]
       )
     } catch (error) {
@@ -99,10 +106,10 @@ export class InjectedConnector extends AbstractConnector {
     // if unsuccessful, try enable
     if (!account) {
       // if enable is successful but doesn't return accounts, fall back to getAccount (not happy i have to do this...)
-      account = await window.ethereum.enable().then(sendReturn => sendReturn && parseSendReturn(sendReturn)[0])
+      account = await provider.enable().then(sendReturn => sendReturn && parseSendReturn(sendReturn)[0])
     }
 
-    return { provider: window.ethereum, ...(account ? { account } : {}) }
+    return { provider: provider, ...(account ? { account } : {}) }
   }
 
   public async getProvider(): Promise<any> {
