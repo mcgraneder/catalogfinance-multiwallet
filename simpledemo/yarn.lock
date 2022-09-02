@@ -35,10 +35,10 @@
     tiny-invariant "^1.0.6"
     tiny-warning "^1.0.3"
 
-"@catalogfinance-multiwallet/metamask-connector@0.15.1":
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/@catalogfinance-multiwallet/metamask-connector/-/metamask-connector-0.15.1.tgz#f6256dd19de2c129b4a7995239cfebaa7e1a524d"
-  integrity sha512-5IfwoABTxKi5W0y9GrikHPICjpIyII9mwTcJwfeWqvCcPEHBm6n+BYnMDBapGoK4t8KKhVb1R/CUqNrIS1kqyQ==
+"@catalogfinance-multiwallet/metamask-connector@0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@catalogfinance-multiwallet/metamask-connector/-/metamask-connector-0.15.0.tgz#21ff4cb7dbb160c26933ec350ff16a896f879042"
+  integrity sha512-ggJPNXP/kSi6GZBRFjbNt8LojpUXOqCaNWI/JUiqEo+qRdZf4FT8c1anvQrn2CD9zCG/kK3H2SuQMjd7KlGfIQ==
   dependencies:
     "@catalogfinance-multiwallet/abstract-connector" "^0.15.0"
     "@catalogfinance-multiwallet/types" "^0.15.0"
