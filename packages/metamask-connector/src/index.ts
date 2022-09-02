@@ -85,7 +85,6 @@ export class InjectedConnector extends AbstractConnector {
       provider = (provider as any).providers.find((p: any) => p.isMetaMask) ?? (provider as any).providers[0]
         
     }
-
     // try to activate + get account via eth_requestAccounts
     let account
     try {
