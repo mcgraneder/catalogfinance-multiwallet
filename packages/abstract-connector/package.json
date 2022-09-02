@@ -1,0 +1,40 @@
+{
+  "name": "@catalogfinance-multiwallet/abstract-connector",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.1.0",
+  "description": "A simple, maximally extensible, dependency minimized framework for building modern Ethereum dApps",
+  "keywords": [
+    "react",
+    "react-hooks",
+    "hooks",
+    "ethereum",
+    "javascript",
+    "typescript",
+    "web3",
+    "context",
+    "frontend",
+    "dapp"
+  ],
+  "author": "mcgraneder <mcgrane480@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mcgraneder/catalogfinance-multiwallet.git"
+  },
+  "main": "dist/index.js",
+  "module": "dist/types.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "lint": "tsdx lint src"
+  },
+  "dependencies": {
+    "@catalogfinance-multiwallet/types": "^0.1.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,13 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "version": "0.13.0",
+  "npmClientArgs": [
+    "--strict-ssl=false",
+    "--always-auth=true",
+    "--_auth=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"
+  ]
+}
