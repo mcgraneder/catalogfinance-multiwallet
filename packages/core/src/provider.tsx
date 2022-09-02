@@ -12,6 +12,7 @@ interface Web3ReactProviderArguments {
   children: any
 }
 
+
 export function createWeb3ReactRoot(key: string): (args: Web3ReactProviderArguments) => JSX.Element {
   invariant(!CONTEXTS[key], `A root already exists for provided key ${key}`)
 
