@@ -4,7 +4,7 @@
   ],
   "useWorkspaces": true,
   "npmClient": "yarn",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "npmClientArgs": [
     "--strict-ssl=false",
     "--always-auth=true",
